@@ -1,11 +1,13 @@
 //Included libraries and such //
 //Using SDL and standard IO
 #include <SDL.h>
+#include <SDL_main.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 1000;
-const int SCREEN_HEIGHT = 500;
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
+
 int main( int argc, char* args[] )
 {
     //The window we'll be rendering to
@@ -15,20 +17,19 @@ int main( int argc, char* args[] )
     SDL_Surface* screenSurface = NULL;
 
     //Initialize SDL
-
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
         printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
     }
-    else
+     else
     {
         //Create window
-        window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        window = SDL_CreateWindow( "Menu Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
         if( window == NULL )
         {
-            printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+            printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError());
         }
-          else
+           else
         {
             //Get window surface
             screenSurface = SDL_GetWindowSurface( window );
@@ -40,7 +41,7 @@ int main( int argc, char* args[] )
             SDL_UpdateWindowSurface( window );
 
             //Wait two seconds
-            SDL_Delay( 2000 );
+            SDL_Delay( 4000 );
         }
     }
     //Destroy window
@@ -51,3 +52,4 @@ int main( int argc, char* args[] )
 
     return 0;
 }
+
